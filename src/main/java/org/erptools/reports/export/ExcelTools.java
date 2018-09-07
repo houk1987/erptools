@@ -17,7 +17,7 @@ public class ExcelTools {
 
     }
 
-    private Workbook createWorkBook(){
+    private Workbook createWorkBook(String  sheetName){
         Workbook workbook = new HSSFWorkbook();
         Sheet sheet = workbook.createSheet("new sheet");
         Row row = sheet.createRow(1);
@@ -46,7 +46,7 @@ public class ExcelTools {
 
     public void buildExcelFile(String fileName){
         try {
-            Workbook workbook  = this.createWorkBook();
+            Workbook workbook  = this.createWorkBook("");
             workbook.write(new FileOutputStream(fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -56,15 +56,8 @@ public class ExcelTools {
     }
 
     public static void main(String[] args) {
-        Workbook wb = new HSSFWorkbook();
-        String path = "/Users/xuxiongli/java/erptools/";
-        try  (OutputStream fileOut = new FileOutputStream(path+"workbook.xls")) {
-            wb.write(fileOut);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        while (true){
-
-        }
+        String path = ClassLoader.getSystemClassLoader().getResource("").getPath();
+        System.out.println(path);
+        ExcelTools.getInstance().buildExcelFile(path+"/text.xls");
     }
 }

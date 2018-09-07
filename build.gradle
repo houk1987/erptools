@@ -15,10 +15,28 @@ dependencies {
 
     compile group: 'org.apache.poi', name: 'poi', version: '3.17'
 
+    compile group: 'org.springframework', name: 'spring-core', version: '4.1.6.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-beans
+    compile group: 'org.springframework', name: 'spring-beans', version: '4.1.6.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '4.1.6.RELEASE'
+
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-test
+    testCompile group: 'org.springframework', name: 'spring-test', version: '4.1.6.RELEASE'
+
+
     testImplementation 'junit:junit:4.12'
 }
 
 repositories {
     //jcenter()
-    mavenCentral()
+
+
+    maven{
+        url 'http://localhost:8081/repository/maven-central/'
+    }
+
 }
